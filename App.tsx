@@ -4,6 +4,7 @@ import { LoginScreen } from "./src/screens/LoginScreen";
 import {PaperProvider, TextInput} from 'react-native-paper';
 import {useState} from "react";
 import {TermsScreen} from "./src/screens/TermsScreen";
+import {StarshipFeedScreen} from "./src/screens/StarshipFeedScreen";
 
 
 export default function App() {
@@ -13,7 +14,8 @@ export default function App() {
       // <View style={styles.container}>
           <PaperProvider>
         {/*<LoginScreen/>*/}
-              <TermsScreen/>
+        {/*      <TermsScreen/>*/}
+              <StarshipFeedScreen/>
       </PaperProvider>
       // </View>
   );
