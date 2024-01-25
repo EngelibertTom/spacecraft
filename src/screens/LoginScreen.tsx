@@ -37,8 +37,6 @@ export function LoginScreen() {
                 <Button icon="login" mode="contained" onPress={() => console.log('Pressed')}>
                     Login
                 </Button>
-
-
             </View>
         </SafeAreaView>
     );

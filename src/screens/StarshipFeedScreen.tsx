@@ -2,7 +2,7 @@ import React from "react";
 import {ActivityIndicator, StyleSheet, StatusBar, View, Text, FlatList, SafeAreaView} from "react-native";
 import { useStarships } from "../hooks/useStarships";
 import { StarshipCard } from "../components/StarshipCard";
-
+import {Offline} from "../components/Offline";
 
 export type Starship = {
     name: string;
@@ -32,7 +32,10 @@ export const StarshipFeedScreen = () => {
     );
 
     return (
+
+
         <View style={styles.container}>
+            <Offline></Offline>
             <FlatList
                 data={starships}
                 renderItem={renderItem}
