@@ -1,13 +1,11 @@
 import React from "react";
 import {View, Image, Alert, Animated, StyleSheet} from "react-native";
-import { Appbar, Text } from "react-native-paper";
+import {Appbar, Button, Text} from "react-native-paper";
 import ScrollView = Animated.ScrollView;
 
-export const TermsScreen = () => {
+export const TermsScreen = ({navigation}) => {
     function goBack() {
-        // We need to use the screen props `{navigation}` to navigate back
-        // it will be introduced in the next lesson `react-navigation`
-        Alert.alert("goBack pressed!");
+        navigation.goBack()
     }
 
     return (
@@ -17,6 +15,7 @@ export const TermsScreen = () => {
                 <Appbar.Content title="Terms and Conditions" />
             </Appbar.Header>
             <View style={{ padding: 32 }}>
+                <Button title="Go back" onPress={() => navigation.goBack()} />
                 <Text variant="bodyMedium" style={{ marginBottom: 24 }}>
                     This Terms of Service, including all supplemental terms as amended
                     from time to time, governs your use of the online game, service, or

@@ -1,16 +1,21 @@
-import { View, SafeAreaView, StyleSheet, Dimensions } from 'react-native';
+import {View, SafeAreaView, StyleSheet, Dimensions, TouchableOpacity} from 'react-native';
 import {Text, TextInput} from 'react-native-paper';
 import React, {useState} from 'react';
 import { Button } from 'react-native-paper';
 import Header from "../components/Header";
+import {Routes} from "../navigation/Routes"
+import {useAuth} from "../context/AuthentificationContext";
+
 
 
 var width = Dimensions.get('window').width;
 var height = Dimensions.get('window').height;
 
-export function LoginScreen() {
+export function LoginScreen({navigation}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const authContext = useAuth();
+
     return (
         <SafeAreaView>
             <View style={styles.container}>
@@ -34,9 +39,11 @@ export function LoginScreen() {
                     onChangeText={text => setPassword(password)}
                     style={styles.input}
                 />
-                <Button icon="login" mode="contained" onPress={() => console.log('Pressed')}>
+                <Button icon="login" mode="contained" onPress={() => authContext.setIsSignedIn(true)}>
                     Login
                 </Button>
+
+                <TouchableOpacity onPress={() => navigation.navigate(Routes.TERMS_SCREEN)}><Text>Conditions générales d'utilisation</Text></TouchableOpacity>
             </View>
         </SafeAreaView>
     );

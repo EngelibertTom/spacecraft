@@ -1,8 +1,19 @@
 import React from "react";
-import {ActivityIndicator, StyleSheet, StatusBar, View, Text, FlatList, SafeAreaView} from "react-native";
+import {
+    ActivityIndicator,
+    StyleSheet,
+    StatusBar,
+    View,
+    Text,
+    FlatList,
+    SafeAreaView,
+    TouchableOpacity
+} from "react-native";
 import { useStarships } from "../hooks/useStarships";
 import { StarshipCard } from "../components/StarshipCard";
 import {Offline} from "../components/Offline";
+import {handlePress} from "react-native-paper/lib/typescript/components/RadioButton/utils";
+import {Routes} from "../navigation/Routes";
 
 export type Starship = {
     name: string;
@@ -12,8 +23,12 @@ export type Starship = {
     hyperdrive_rating: string;
 };
 
-export const StarshipFeedScreen = () => {
+export const StarshipFeedScreen = ({navigation}) => {
     const { isLoading, isError, data, error } = useStarships();
+
+    const handlePress = (item: Starship) => {
+        navigation.navigate(Routes.STARSHIP_DETAIL_SCREEN, { starship: item });
+    };
 
     if (isLoading) {
         return (
@@ -28,19 +43,23 @@ export const StarshipFeedScreen = () => {
 
     const starships = data.results;
     const renderItem = ({ item }: { item: Starship }) => (
-        <StarshipCard item={item}></StarshipCard>
+        <TouchableOpacity onPress={() => handlePress(item)}>
+            <StarshipCard item={item} />
+        </TouchableOpacity>
     );
 
     return (
 
 
         <View style={styles.container}>
-            <Offline></Offline>
-            <FlatList
-                data={starships}
-                renderItem={renderItem}
-                keyExtractor={(item) => item.url}
-            />
+            <Offline />
+
+                <FlatList
+                    data={starships}
+                    renderItem={renderItem}
+                    keyExtractor={(item) => item.url}
+                />
+
         </View>
     );
 };
