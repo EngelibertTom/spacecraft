@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, {createContext, useState, useContext, PropsWithChildren} from 'react';
 
 
 interface AuthContextProps {
@@ -9,10 +9,10 @@ interface AuthContextProps {
 
 const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
 
-// Créez un composant fournisseur pour envelopper votre application avec le contexte
 export const AuthProvider = ({ children }) => {
-    const [isSignedIn, setIsSignedIn] = useState(false);
-console.log(isSignedIn)
+
+    const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
+
     return (
 
         <AuthContext.Provider value={{ isSignedIn, setIsSignedIn }}>

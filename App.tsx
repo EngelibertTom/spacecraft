@@ -21,27 +21,30 @@ const queryClient = new QueryClient()
 export default function App() {
 
    const {isSignedIn} = useAuth()
+console.log(isSignedIn)
     const Stack = createNativeStackNavigator();
     return (
-      <AuthProvider>
+
       <QueryClientProvider client={queryClient}>
           <NetworkProvider>
           <PaperProvider>
 
               <SafeAreaView style={styles.container}>
+                  <AuthProvider>
             <NavigationContainer>
                 <Stack.Navigator>
                   {isSignedIn ?
-                      <Stack.Screen name={Routes.TERMS_SCREEN} component={Navigator} />
+                      <Stack.Screen name={"NAVIGATOR"} component={Navigator} />
                       :
-                      <Stack.Screen name={Routes.LOGIN_SCREEN} component={AuthNavigator} />}
+                      <Stack.Screen name={"AUTH_NAVIGATOR"} component={AuthNavigator} />}
                 </Stack.Navigator>
                 </NavigationContainer>
+                  </AuthProvider>
               </SafeAreaView>
       </PaperProvider>
           </NetworkProvider>
       </QueryClientProvider>
-      </AuthProvider>
+
 
 
   );

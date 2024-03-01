@@ -5,13 +5,14 @@ import {LoginScreen} from "../screens/LoginScreen";
 import {Routes} from "../navigation/Routes"
 import {TermsScreen} from "../screens/TermsScreen";
 
+
 export default function AuthNavigator() {
 
     const Stack = createNativeStackNavigator();
     return (
 
             <Stack.Navigator screenOptions={{ headerShown: false }}>
-                <Stack.Screen name="Login" component={LoginScreen} />
+                <Stack.Screen name={Routes.LOGIN_SCREEN} component={LoginScreen} />
                 <Stack.Screen name={Routes.TERMS_SCREEN} component={TermsScreen} />
             </Stack.Navigator>
 
