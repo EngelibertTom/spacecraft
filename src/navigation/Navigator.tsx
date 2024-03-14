@@ -16,8 +16,10 @@ export default function Navigator() {
     return (
 
             <Stack.Navigator screenOptions={{ headerShown: false }}>
+                <Stack.Screen name={Routes.LOGIN_SCREEN} component={LoginScreen} />
                 <Stack.Screen name={Routes.STARSHIP_FEED_SCREEN} component={StarshipFeedScreen} />
                 <Stack.Screen name={Routes.STARSHIP_DETAIL_SCREEN} component={StarshipDetailsScreen} />
+                <Stack.Screen name={Routes.TERMS_SCREEN} component={TermsScreen} />
             </Stack.Navigator>
 
     );

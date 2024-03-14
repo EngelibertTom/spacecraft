@@ -32,11 +32,8 @@ console.log(isSignedIn)
               <SafeAreaView style={styles.container}>
                   <AuthProvider>
             <NavigationContainer>
-                <Stack.Navigator>
-                  {isSignedIn ?
+                <Stack.Navigator screenOptions={{ headerShown: false }}>
                       <Stack.Screen name={"NAVIGATOR"} component={Navigator} />
-                      :
-                      <Stack.Screen name={"AUTH_NAVIGATOR"} component={AuthNavigator} />}
                 </Stack.Navigator>
                 </NavigationContainer>
                   </AuthProvider>

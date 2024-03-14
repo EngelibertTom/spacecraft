@@ -39,7 +39,7 @@ export function LoginScreen({navigation}) {
                     onChangeText={text => setPassword(password)}
                     style={styles.input}
                 />
-                <Button icon="login" mode="contained" onPress={() => authContext.setIsSignedIn(true)}>
+                <Button icon="login" mode="contained" onPress={() => navigation.navigate(Routes.STARSHIP_FEED_SCREEN)}>
                     Login
                 </Button>
 
